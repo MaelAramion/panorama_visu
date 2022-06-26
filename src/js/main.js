@@ -1,76 +1,44 @@
-var field = true;
-const panorama = new PANOLENS.ImagePanorama("src/img/portail.jpg");
-const otherpic = new PANOLENS.ImagePanorama("src/img/portail-secretariat.jpg");
+// Ajouts des panoramas
+const portail = new PANOLENS.ImagePanorama("src/img/portail.jpg");
+const secretariat_arriere = new PANOLENS.ImagePanorama("src/img/secretariat_arriere.jpg");
+const secretariat_cote = new PANOLENS.ImagePanorama("src/img/secretariat_cote.jpg");
+
+
 const viewer = new PANOLENS.Viewer({ output: "console" });
 
-const theta1 = -Math.PI / 40; // hauteur -pi/2 à pi/2
-const phi1 = (Math.PI * 4) / 5; // placement sur le cercle à plat - pi à pi, 0 = derrière, pi et -pi devant
 
-const theta2 = -Math.PI / 10; // hauteur -pi/2 à pi/2
-const phi2 = (Math.PI * 4) / 5; // placement sur le cercle à plat - pi à pi, 0 = derrière, pi et -pi devant
-// var rayon = panorama.radius;
-// console.log("Rayon : " + rayon);
-
-// var position = new THREE.Vector3(
-//     rayon * Math.cos(theta1) * Math.sin(phi1), // Attention Y sphère
-//     rayon * Math.sin(theta1), // Attention Z de la sphère
-//     rayon * Math.cos(theta1) * Math.cos(phi1) // Attention X de la sphère
-// );
-
-// var taille = 300;
-
-// var infospot = new PANOLENS.Infospot((taille * position.length()) / rayon, PANOLENS.DataImage.Info);
-// infospot.position.copy(position);
-// //        infospot.addHoverText( 'Infospot1');
-// infospot.addEventListener("click", onFocus);
-// panorama.add(infospot);
-
-// var otherinfo = new PANOLENS.Infospot((taille * position.length()) / rayon, PANOLENS.DataImage.Info);
-// otherinfo.position.copy(position);
-// //        otherinfo.addHoverText( 'Infospot1');
-// otherinfo.addEventListener("click", onFocus);
-// otherpic.add(otherinfo);
-
-// viewer.add(panorama);
-// viewer.render.sortObjects = true;
-
+// Fonction au click de l'infospot
 function onFocus() {
     console.log("Clic sur Infospot");
     if (field) {
-        viewer.remove(panorama);
-        viewer.add(otherpic);
-        viewer.setPanorama(otherpic);
+        viewer.remove(portail);
+        viewer.add(secretariat_arriere);
+        viewer.setPanorama(secretariat_arriere);
     } else {
-        viewer.remove(otherpic);
-        viewer.add(panorama);
-        viewer.setPanorama(panorama);
+        viewer.remove(secretariat_arriere);
+        viewer.add(portail);
+        viewer.setPanorama(portail);
     }
-
-    field = !field;
 }
 
-function display(panorama, nextPanorama, pos1, pos2, pos3) {
-    // const panorama = new PANOLENS.ImagePanorama(imgPath);
-    // const rayon = panorama.radius;
-    // const taille = 300;
 
-    // var position = new THREE.Vector3(
-    //     rayon * Math.cos(theta) * Math.sin(phi), // Attention Y sphère
-    //     rayon * Math.sin(theta), // Attention Z de la sphère
-    //     rayon * Math.cos(theta) * Math.cos(phi) // Attention X de la sphère
-    // );
+// Fonction qui ajoute les infospots
+function display(portail, nextPanorama, pos1, pos2, pos3) {
 
     var infospot = new PANOLENS.Infospot(300, PANOLENS.DataImage.Info);
     infospot.position.set(pos1, pos2, pos3);
     //        infospot.addHoverText( 'Infospot1');
     infospot.addEventListener("click", () => {
-        viewer.remove(panorama);
+        viewer.remove(portail);
         viewer.add(nextPanorama);
         viewer.setPanorama(nextPanorama);
     });
-    panorama.add(infospot);
-    viewer.add(panorama);
+    portail.add(infospot);
+    viewer.add(portail);
 }
 
-display(panorama, otherpic, 3034, -225, -3956);
-display(otherpic, panorama, 58.5, -378, 4982);
+// display(panorama de départ, panorama d'arrivé, coordonées de l'infospo)
+display(portail, secretariat_arriere, 3034, -225, -3956);
+display(secretariat_arriere, portail, 58.5, -378, 4982);
+display(secretariat_arriere, secretariat_cote, 4971.64, -445.35, 127.31);
+display(secretariat_cote, secretariat_arriere, 123.80, -180.37, -4986.42);
