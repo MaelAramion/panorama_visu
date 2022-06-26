@@ -25,13 +25,13 @@ Vous pouvez soit :
 * télécharger au format zip
 
 
-## Démarrage
+### Démarrage
 
 Ouvrez le dossier décompressé du projet avec votre éditeur de texte.
 Lancer un serveur à partir du dossier ( l'extension Live Server vous permet de le faire )
 Entrer l'adresse du serveur _localhost ou 127.0.0.1_
 
-## Fabriqué avec
+### Fabriqué avec
 
 Ce projet à été réalisé avec:
 
@@ -53,7 +53,7 @@ _exemple :_
 Liste des versions : [Cliquer pour afficher](https://github.com/your/project-name/tags)
 _(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_ -->
 
-## Auteurs
+### Auteurs
 Listez le(s) auteur(s) du projet ici !
 * **Maël Aramion** _alias_ [@MaelAramion](https://github.com/MaelAramion)
 * **Maxime Jean** _alias_ [@gitMax18](https://github.com/gitMax18)
