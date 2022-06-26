@@ -34,42 +34,17 @@ const phi2 = (Math.PI * 4) / 5; // placement sur le cercle à plat - pi à pi, 0
 // viewer.add(panorama);
 // viewer.render.sortObjects = true;
 
-function onFocus() {
-    console.log("Clic sur Infospot");
-    if (field) {
-        viewer.remove(panorama);
-        viewer.add(otherpic);
-        viewer.setPanorama(otherpic);
-    } else {
-        viewer.remove(otherpic);
-        viewer.add(panorama);
-        viewer.setPanorama(panorama);
-    }
-
-    field = !field;
-}
-
 function display(panorama, nextPanorama, pos1, pos2, pos3) {
-    // const panorama = new PANOLENS.ImagePanorama(imgPath);
-    // const rayon = panorama.radius;
-    // const taille = 300;
-
-    // var position = new THREE.Vector3(
-    //     rayon * Math.cos(theta) * Math.sin(phi), // Attention Y sphère
-    //     rayon * Math.sin(theta), // Attention Z de la sphère
-    //     rayon * Math.cos(theta) * Math.cos(phi) // Attention X de la sphère
-    // );
-
     var infospot = new PANOLENS.Infospot(300, PANOLENS.DataImage.Info);
     infospot.position.set(pos1, pos2, pos3);
+    panorama.add(infospot);
+    viewer.add(panorama);
     //        infospot.addHoverText( 'Infospot1');
     infospot.addEventListener("click", () => {
         viewer.remove(panorama);
         viewer.add(nextPanorama);
         viewer.setPanorama(nextPanorama);
     });
-    panorama.add(infospot);
-    viewer.add(panorama);
 }
 
 display(panorama, otherpic, 3034, -225, -3956);
