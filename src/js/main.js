@@ -1,13 +1,14 @@
-var field = true;
+// var field = true;
 const panorama = new PANOLENS.ImagePanorama("src/img/portail.jpg");
 const otherpic = new PANOLENS.ImagePanorama("src/img/portail-secretariat.jpg");
+const otherpic2 = new PANOLENS.ImagePanorama("src/img/portail-secretariat-2.jpg");
 const viewer = new PANOLENS.Viewer({ output: "console" });
 
-const theta1 = -Math.PI / 40; // hauteur -pi/2 à pi/2
-const phi1 = (Math.PI * 4) / 5; // placement sur le cercle à plat - pi à pi, 0 = derrière, pi et -pi devant
+// const theta1 = -Math.PI / 40; // hauteur -pi/2 à pi/2
+// const phi1 = (Math.PI * 4) / 5; // placement sur le cercle à plat - pi à pi, 0 = derrière, pi et -pi devant
 
-const theta2 = -Math.PI / 10; // hauteur -pi/2 à pi/2
-const phi2 = (Math.PI * 4) / 5; // placement sur le cercle à plat - pi à pi, 0 = derrière, pi et -pi devant
+// const theta2 = -Math.PI / 10; // hauteur -pi/2 à pi/2
+// const phi2 = (Math.PI * 4) / 5; // placement sur le cercle à plat - pi à pi, 0 = derrière, pi et -pi devant
 // var rayon = panorama.radius;
 // console.log("Rayon : " + rayon);
 
@@ -34,20 +35,20 @@ const phi2 = (Math.PI * 4) / 5; // placement sur le cercle à plat - pi à pi, 0
 // viewer.add(panorama);
 // viewer.render.sortObjects = true;
 
-function onFocus() {
-    console.log("Clic sur Infospot");
-    if (field) {
-        viewer.remove(panorama);
-        viewer.add(otherpic);
-        viewer.setPanorama(otherpic);
-    } else {
-        viewer.remove(otherpic);
-        viewer.add(panorama);
-        viewer.setPanorama(panorama);
-    }
+// function onFocus() {
+//     console.log("Clic sur Infospot");
+//     if (field) {
+//         viewer.remove(panorama);
+//         viewer.add(otherpic);
+//         viewer.setPanorama(otherpic);
+//     } else {
+//         viewer.remove(otherpic);
+//         viewer.add(panorama);
+//         viewer.setPanorama(panorama);
+//     }
 
-    field = !field;
-}
+//     field = !field;
+// }
 
 function display(panorama, nextPanorama, pos1, pos2, pos3) {
     // const panorama = new PANOLENS.ImagePanorama(imgPath);
@@ -72,5 +73,58 @@ function display(panorama, nextPanorama, pos1, pos2, pos3) {
     viewer.add(panorama);
 }
 
-display(panorama, otherpic, 3034, -225, -3956);
-display(otherpic, panorama, 58.5, -378, 4982);
+// display(panorama, otherpic, 3034, -225, -3956);
+// display(otherpic, otherpic2, 4985.19, -369.81, 76.94);
+// display(otherpic2, otherpic, 4985.19, -369.81, 76.94);
+
+const panoramasSettings = [
+    {
+        panorama: panorama,
+        interestsPoint: [
+            {
+                panorama: otherpic,
+                coordonate: [3034, -225, -3956],
+            },
+            {
+                panorama: otherpic,
+                coordonate: [5000, -225, -3956],
+            },
+        ],
+    },
+    {
+        panorama: otherpic,
+        interestsPoint: [
+            {
+                panorama: otherpic2,
+                coordonate: [4985.19, -369.81, 76.94],
+            },
+        ],
+    },
+    {
+        panorama: otherpic2,
+        interestsPoint: [
+            {
+                panorama: otherpic,
+                coordonate: [4985.19, -369.81, 76.94],
+            },
+        ],
+    },
+];
+
+panoramasSettings.forEach((item) => {
+    display2(item.panorama, item.interestsPoint);
+});
+
+function display2(panorama, interestsPoints) {
+    interestsPoints.forEach((interest) => {
+        const infospot = new PANOLENS.Infospot(300, PANOLENS.DataImage.Info);
+        infospot.position.set(...interest.coordonate);
+        panorama.add(infospot);
+        infospot.addEventListener("click", () => {
+            viewer.remove(panorama);
+            viewer.add(interest.panorama);
+            viewer.setPanorama(interest.panorama);
+        });
+    });
+    viewer.add(panorama);
+}
