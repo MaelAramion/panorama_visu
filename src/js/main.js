@@ -95,6 +95,6 @@ display(badminton, parking_personnel, -4908.75, 97.11, 901.49);
 display(badminton, secretariat_gauche, -4654.45, -37.66, -1803.65);
 
 redirect(secretariat_droit, '/groupe1', 17.28, 66.34, -4996.49);
-redirect(secretariat_gauche, '/groupe1?=toto', 4985.79, -246.72, 86.11);
+redirect(secretariat_gauche, '/groupe1', 4985.79, -246.72, 86.11);
 redirect(badminton, '/groupe1', 633.50, -126.82, -4950.01);
 
