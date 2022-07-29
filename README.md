@@ -14,8 +14,8 @@ Pour pouvoir travailler sur les fichiers, il vous faut:
 - Un editeur de texte _(ex: Visual Code Studio, Notepad++, ... )_
 - Un navigateur internet _(ex: Mozilla Firefox, Google Chrome, ... )_
 - Un localhost _(ex: Extension Live Server sur Visual Code Studio, wamp, ... )_
-- Insta 360 Studio pour le pc
-- Insta 360 One pour le mobile
+- Insta 360 Studio pour le pc _(pour travailler sur les images)_
+- Photoshop ou votre logiciel de retouche préféré _(pour la retouche d'image)_
 
 ### Installation
 
