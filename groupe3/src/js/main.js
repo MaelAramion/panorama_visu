@@ -61,7 +61,7 @@ function redirect(portail, url, pos1, pos2, pos3) {
 }
 
 // Fonction qui ajoute les infospots
-function display(portail, nextPanorama, pos1, pos2, pos3) {
+function display(portail, nextPanorama, pos1, pos2, pos3, o1, o2, o3) {
     var infospot = new PANOLENS.Infospot(300, "src/img/arrow.png");
     infospot.position.set(pos1, pos2, pos3);
     //        infospot.addHoverText( 'Infospot1');
@@ -69,6 +69,11 @@ function display(portail, nextPanorama, pos1, pos2, pos3) {
         viewer.remove(portail);
         viewer.add(nextPanorama);
         viewer.setPanorama(nextPanorama);
+        if(o1 != null && o2 != null && o3 != null){
+            nextPanorama.addEventListener('enter-fade-start', function () {
+                viewer.tweenControlCenter(new THREE.Vector3(o1, o2 , o3));
+            });
+        }
     });
     portail.add(infospot);
     viewer.add(portail);
@@ -100,13 +105,13 @@ function redirectPanorama(panorama_depart) {
 
     // display(panorama de départ, panorama d'arrivé, coordonées de l'infospot)
     display(portail, secretariat_droit, 2674.21, -316.66, -4202.18);
-    display(secretariat_droit, secretariat_interieur, 579.92, -119.75, -4958.78);
+    display(secretariat_droit, secretariat_interieur, 579.92, -119.75, -4958.78,-4981.72, -391.67, 55.23);
     display(secretariat_droit, portail, 58.5, -378, 4982);
     display(secretariat_gauche, secretariat_droit, 123.8, -180.37, -4986.42);
     display(secretariat_interieur, secretariat_droit, 4950.11, -650.3, 75.21);
     display(secretariat_interieur, secretariat_gauche, -4984.36, -362.2, -26.96);
     display(secretariat_droit, secretariat_gauche, 4971.64, -445.35, 127.31);
-    display(secretariat_gauche, secretariat_interieur, 4780.2, -442.16, -1369.86);
+    display(secretariat_gauche, secretariat_interieur, 4780.2, -442.16, -1369.86, 4947.18, -679.20, 65.81);
     display(secretariat_gauche, badminton, 4757.03, -294.87, 1493.86);
     display(portail, parking_personnel, 4979.89, -86.38, -319.01);
     display(parking_personnel, badminton, 4972.78, -376.78, 236.91);
