@@ -13,7 +13,7 @@ Pour pouvoir travailler sur les fichiers, il vous faut:
 
 - Un editeur de texte _(ex: Visual Code Studio, Notepad++, ... )_
 - Un navigateur internet _(ex: Mozilla Firefox, Google Chrome, ... )_
-- Un localhost _(ex: Extension Live Server sur Visual Code Studio, wamp, ... )_
+- Un localhost _(ex: dossier www dans wamp, ... )_
 - Insta 360 Studio pour le pc _(pour travailler sur les images)_
 - Photoshop ou votre logiciel de retouche préféré _(pour la retouche d'image)_
 
@@ -55,7 +55,7 @@ Liste des versions : [Cliquer pour afficher](https://github.com/your/project-nam
 _(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_ -->
 
 ### Auteurs
-Listez le(s) auteur(s) du projet ici !
+
 * **Maël Aramion** _alias_ [@MaelAramion](https://github.com/MaelAramion)
 * **Maxime Jean** _alias_ [@gitMax18](https://github.com/gitMax18)
 * **Brice Courtot** _alias_ [@bcourtot](https://github.com/bcourtot)
