@@ -1,3 +1,12 @@
+const orientation = [
+    new THREE.Vector3(3445.06, 3.28, -3670),
+    new THREE.Vector3(4705.82, -372, -1634.8),
+    new THREE.Vector3(920.99, -64.89, -4906.94),
+    new THREE.Vector3(1557.25, -478.06, 4723.27),
+    new THREE.Vector3(-4871.97, -583.4, 915.26),
+    new THREE.Vector3(4976.66, -344.19, 187.29),
+];
+
 // Ajouts des panoramas
 const portail = new PANOLENS.ImagePanorama("src/img/exterieur_entree_parking_personnel.jpg");
 portail.addEventListener("enter-fade-start", function () {
@@ -26,15 +35,6 @@ secretariat_interieur.addEventListener("enter-fade-start", function () {
 
 const viewer = new PANOLENS.Viewer({ output: "console" });
 
-var orientation = [
-    new THREE.Vector3(3445.06, 3.28, -3670),
-    new THREE.Vector3(4705.82, -372, -1634.8),
-    new THREE.Vector3(920.99, -64.89, -4906.94),
-    new THREE.Vector3(1557.25, -478.06, 4723.27),
-    new THREE.Vector3(-4871.97, -583.4, 915.26),
-    new THREE.Vector3(4976.66, -344.19, 187.29),
-];
-
 // Fonction au click de l'infospot
 function onFocus() {
     console.log("Clic sur Infospot");
@@ -50,7 +50,7 @@ function onFocus() {
 }
 
 function redirect(portail, url, pos1, pos2, pos3) {
-    var infoRedirect = new PANOLENS.Infospot(300, PANOLENS.DataImage.Info);
+    var infoRedirect = new PANOLENS.Infospot(300, "src/img/arrow.png");
     infoRedirect.position.set(pos1, pos2, pos3);
     //        infospot.addHoverText( 'Infospot1');
     infoRedirect.addEventListener("click", () => {

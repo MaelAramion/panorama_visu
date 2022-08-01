@@ -1,22 +1,20 @@
 <?php
-
-
-if(isset($_GET['groupe'])){
+if (isset($_GET['groupe'])) {
     $groupe = $_GET['groupe'];
-    if(isset($_GET['panorama_depart'])){
+    if (isset($_GET['panorama_depart'])) {
         $panorama_depart = $_GET['panorama_depart'];
         switch ($groupe) {
             case 1:
-                Header('Location: groupe1?panorama_depart='.$panorama_depart);
+                Header('Location: groupe1?panorama_depart=' . $panorama_depart);
                 break;
             case 2:
-                Header('Location: groupe2?panorama_depart='.$panorama_depart);
+                Header('Location: groupe2?panorama_depart=' . $panorama_depart);
                 break;
             case 3:
-                Header('Location: groupe3?panorama_depart='.$panorama_depart);
+                Header('Location: groupe3?panorama_depart=' . $panorama_depart);
                 break;
         }
-    }else{
+    } else {
         switch ($groupe) {
             case 1:
                 Header('Location: groupe1');
@@ -29,9 +27,6 @@ if(isset($_GET['groupe'])){
                 break;
         }
     }
-
-} else{
+} else {
     Header('Location: groupe3');
 }
-
-
