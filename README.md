@@ -60,12 +60,12 @@ _(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_ -->
 * **Maxime Jean** _alias_ [@gitMax18](https://github.com/gitMax18)
 * **Brice Courtot** _alias_ [@bcourtot](https://github.com/bcourtot)
 
-* ***Romain Pelizzo** _alias_ [@Draks898](https://github.com/Draks898)
-* ***Jordan Aimé** _alias_ [@DreamStealerZ](https://github.com/DreamStealerZ)
-* ***Mathieu Maurin** _alias_ [@Matthieu24](https://github.com/Matthieu24)
+* **Romain Pelizzo** _alias_ [@Draks898](https://github.com/Draks898)
+* **Jordan Aimé** _alias_ [@DreamStealerZ](https://github.com/DreamStealerZ)
+* **Mathieu Maurin** _alias_ [@Matthieu24](https://github.com/Matthieu24)
 
-* ***Kalevalio Emmanuel** _alias_ [@kvssMs07](https://github.com/kvssMs07)
-* ***Anthony Gras aka Spoit** _alias_ [@AnthonyG125](https://github.com/AnthonyG125)
+* **Kalevalio Emmanuel** _alias_ [@kvssMs07](https://github.com/kvssMs07)
+* **Anthony Gras aka Spoit** _alias_ [@AnthonyG125](https://github.com/AnthonyG125)
 
 
 <!-- ## License
