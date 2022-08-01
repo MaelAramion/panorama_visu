@@ -109,7 +109,7 @@
 
     function onFocus(pic1, pic2, pos1, pos2, pos3, o1, o2, o3) {
 
-    var infospot = new PANOLENS.Infospot(300, "img/arrow.png");
+    var infospot = new PANOLENS.Infospot(300, PANOLENS.DataImage.Arrow);
     infospot.position.set(pos1, pos2, pos3);
     infospot.addEventListener("click", () => {
         viewer.remove(pic1);
@@ -126,7 +126,7 @@
     }
 
     function redirect(panorama, url, pos1, pos2, pos3) {
-        var infoRedirect = new PANOLENS.Infospot(300, "img/arrow.png");
+        var infoRedirect = new PANOLENS.Infospot(300, PANOLENS.DataImage.Arrow);
         infoRedirect.position.set(pos1, pos2, pos3);
         //        infospot.addHoverText( 'Infospot1');
         infoRedirect.addEventListener("click", () => {
