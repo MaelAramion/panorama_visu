@@ -105,6 +105,7 @@ function redirectPanorama(panorama_depart){
 
     // display(panorama de départ, panorama d'arrivé, coordonées de l'infospot)
     display(portail, secretariat_droit, 2674.21, -316.66, -4202.18);
+    display(secretariat_droit, secretariat_interieur, 579.92, -119.75, -4958.78);
     display(secretariat_droit, portail, 58.5, -378, 4982);
     display(secretariat_gauche, secretariat_droit, 123.80, -180.37, -4986.42);
     display(secretariat_interieur, secretariat_droit, 4950.11, -650.30, 75.21);
