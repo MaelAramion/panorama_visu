@@ -68,9 +68,6 @@ Listez le(s) auteur(s) du projet ici !
 * ***Anthony Gras aka Spoit** _alias_ [@AnthonyG125](https://github.com/AnthonyG125)
 
 
-
-_(pour le lien mettez simplement l'URL de votre projet suivi de ``/contirubors``)_ -->
-
 <!-- ## License
 
 Ce projet est sous licence ``exemple: WTFTPL`` - voir le fichier [LICENSE.md](LICENSE.md) pour plus d'informations
