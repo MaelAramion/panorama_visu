@@ -9,7 +9,9 @@ const orientation = [
 
 // Ajouts des panoramas
 const portail = new PANOLENS.ImagePanorama("src/img/exterieur_entree_parking_personnel.jpg");
-
+portail.addEventListener('enter-fade-start', function () {
+    viewer.tweenControlCenter(new THREE.Vector3(4360.54, -255.11, -2418.25), 0);
+});
 const parking_personnel = new PANOLENS.ImagePanorama("src/img/exterieur_parking_personnel.jpg");
 
 const secretariat_droit = new PANOLENS.ImagePanorama("src/img/exterieur_secretariat_droit.jpg");
@@ -75,16 +77,19 @@ function redirectPanorama(panorama_depart) {
     }
     if (panorama_depart == "secretariat_droit") {
         display(secretariat_droit, portail, 58.5, -378, 4982);
+        secretariat_droit.addEventListener('enter-fade-start', function () {
+            viewer.tweenControlCenter(new THREE.Vector3(1271.49, -1097.85, 4700.03), 0);
+        });
         display(portail, secretariat_droit, 2674.21, -316.66, -4202.18);
         display(secretariat_gauche, secretariat_droit, 123.8, -180.37, -4986.42);
     }
     if (panorama_depart == "secretariat_gauche") {
         display(secretariat_gauche, secretariat_droit, 123.8, -180.37, -4986.42);
-        display(portail, secretariat_droit, 2674.21, -316.66, -4202.18);
-        display(secretariat_droit, portail, 58.5, -378, 4982);
         secretariat_gauche.addEventListener('enter-fade-start', function () {
             viewer.tweenControlCenter(new THREE.Vector3(-4979.72, 28.77, 365.36), 0);
         });
+        display(portail, secretariat_droit, 2674.21, -316.66, -4202.18);
+        display(secretariat_droit, portail, 58.5, -378, 4982);
     }
     if (panorama_depart == "badminton") {
         display(badminton, parking_personnel, -4908.75, 97.11, 901.49);

@@ -18,6 +18,10 @@
 
     //---- Image ----//
     const pic1 =new PANOLENS.ImagePanorama('img/balcon_i8.jpg');
+    pic1.addEventListener('enter-fade-start', function () {
+        viewer.tweenControlCenter(new THREE.Vector3(4957.48, -212.76, -563.86), 0);
+    });
+
     const pic3 =new PANOLENS.ImagePanorama('img/entree_i8.jpg');
     const pic5 =new PANOLENS.ImagePanorama('img/i16.jpg');
     const pic4 =new PANOLENS.ImagePanorama('img/exterieur_salle_i18.jpg');
@@ -29,45 +33,54 @@
 
     function redirectPanorama(panorama_depart){
         if(panorama_depart == 'ext_i4'){
-            onFocus(pic6, pic6, -23.85, -40.80, 4997.15);
+            onFocus(pic6, pic6, -23.85, -40.80, 4997.15, 4985.12, -255.00, 78.26);
+            pic6.addEventListener('enter-fade-start', function () {
+                viewer.tweenControlCenter(new THREE.Vector3(4985.12, -255.00, 78.26), 0);
+            });
         }
         if(panorama_depart == 'exterieur_salle_i18'){
-            onFocus(pic4, pic3, -4990.27, 91.75, 116.84);
+            onFocus(pic4, pic3, -4990.27, 91.75, 116.84, -4922.27, -353.55, 751.78);
+            pic4.addEventListener('enter-fade-start', function () {
+                viewer.tweenControlCenter(new THREE.Vector3(-4922.27, -353.55, 751.78), 0);
+            });
         }
         if(panorama_depart == 'balcon_i8'){
-            onFocus(pic1, pic2, 642.90, -1438.28, 4736.59);
+            onFocus(pic1, pic2, 642.90, -1438.28, 4736.59, -4958.52, 103.81, 579.46);
+            pic1.addEventListener('enter-fade-start', function () {
+                viewer.tweenControlCenter(new THREE.Vector3(-4958.52, 103.81, 579.46), 0);
+            });
         }
 
         //------------- balcon i8 -------------//
         //-- balcon i8 -> interieur i8 --//
-        onFocus(pic1, pic2, 642.90, -1438.28, 4736.59);
+        onFocus(pic1, pic2, 642.90, -1438.28, 4736.59,4959.71, -592.46, -22.63);
 
         //------------- interieur i8 -------------//
         //-- interieur i8 -> balcon i8 --//
-        onFocus(pic2, pic1, -4981.21, -158.31, 239.80);
+        onFocus(pic2, pic1, -4981.21, -158.31, 239.80, -582.53, -371.76, -4948.36);
 
         //-- interieur i8 -> entree i8 --//
-        onFocus(pic2, pic3, 4966.56, -543.82, -1.82);
+        onFocus(pic2, pic3, 4966.56, -543.82, -1.82, 689.35, -521.61, 4915.15);
 
         //------------- Entre I8 -------------//
         //entree i8 -> interieur i8
-        onFocus(pic3, pic2, 79.71, -520.43, -4965.24);
+        onFocus(pic3, pic2, 79.71, -520.43, -4965.24, -4978.13, -191.40, 273.77);
 
         //-- I8 --> I4 --//
-        onFocus(pic3, pic6, -7000.94, 100.01, 350.15);
+        onFocus(pic3, pic6, -7000.94, 100.01, 350.15, -4986.63, 62.85, 207.92);
 
 
         //-- entree i8 -> salle i18 --//
-        onFocus(pic3, pic4, 4983.67, -394.06, -13.51);
+        onFocus(pic3, pic4, 4983.67, -394.06, -13.51, 4989.70, -248.78, 10.06);
 
         //------------- I4 -------------//
         //-- I4  -> I8 --//
-        onFocus(pic6, pic3, 4988.82, -233.28, 38.52);
+        onFocus(pic6, pic3, 4988.82, -233.28, 38.52, 4985.52, -305.37, -36.02);
 
 
         //------------- extsalle i18 -------------//
         //-- ext i18 -> entree i8 --//
-        onFocus(pic4, pic3, -4990.27, 91.75, 116.84);
+        onFocus(pic4, pic3, -4990.27, 91.75, 116.84, -4969.06, -63.98, 529.03);
 
         //-- ext i18 -> i16 --//
         onFocus(pic4, pic5, -1691.34, -43.57, 4697.31);
@@ -87,28 +100,33 @@
         //-- balcon i8 -> Escalier --/
         redirect(pic1, '../?groupe=2&panorama_depart=escalier_parking', 4952.50, -196.04, -600.44);
         //-- ext i18 -> cafet ---/
-        redirect(pic4, '../?groupe=2',4987.65, -277.42, -27.64);
+        redirect(pic4, '../?groupe=2&panorama_depart=cafet',4987.65, -277.42, -27.64);
     }
 
 
 
 
 
-    function onFocus(pic1, pic2, pos1, pos2, pos3) {
+    function onFocus(pic1, pic2, pos1, pos2, pos3, o1, o2, o3) {
 
-    var infospot = new PANOLENS.Infospot(300, PANOLENS.DataImage.Info);
+    var infospot = new PANOLENS.Infospot(300, "img/arrow.png");
     infospot.position.set(pos1, pos2, pos3);
     infospot.addEventListener("click", () => {
         viewer.remove(pic1);
         viewer.add(pic2);
         viewer.setPanorama(pic2);
+        if(o1 != null && o2 != null && o3 != null){
+            pic2.addEventListener('enter-fade-start', function () {
+                viewer.tweenControlCenter(new THREE.Vector3(o1, o2 , o3), 0);
+            });
+        }
     });
     pic1.add(infospot);
     viewer.add(pic1);
     }
 
     function redirect(panorama, url, pos1, pos2, pos3) {
-        var infoRedirect = new PANOLENS.Infospot(300, PANOLENS.DataImage.Info);
+        var infoRedirect = new PANOLENS.Infospot(300, "img/arrow.png");
         infoRedirect.position.set(pos1, pos2, pos3);
         //        infospot.addHoverText( 'Infospot1');
         infoRedirect.addEventListener("click", () => {
