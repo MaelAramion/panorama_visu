@@ -71,7 +71,7 @@ function display(portail, nextPanorama, pos1, pos2, pos3, o1, o2, o3) {
         viewer.setPanorama(nextPanorama);
         if(o1 != null && o2 != null && o3 != null){
             nextPanorama.addEventListener('enter-fade-start', function () {
-                viewer.tweenControlCenter(new THREE.Vector3(o1, o2 , o3));
+                viewer.tweenControlCenter(new THREE.Vector3(o1, o2 , o3), 0);
             });
         }
     });
