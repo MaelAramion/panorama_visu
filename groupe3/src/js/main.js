@@ -99,18 +99,32 @@ function redirectPanorama(panorama_depart) {
     // display(panorama de départ, panorama d'arrivé, coordonées de l'infospot)
     display(portail, secretariat_droit, 2674.21, -316.66, -4202.18, -47.16, -147.59, -4991.73);
     display(secretariat_droit, secretariat_interieur, 579.92, -119.75, -4958.78,-4981.72, -391.67, 55.23);
+<<<<<<< Updated upstream
     display(secretariat_droit, portail, 58.5, -378, 4982, -2472.54, -774.92, 4275.68);
     display(secretariat_gauche, secretariat_droit, 123.8, -180.37, -4986.42, -4970.70, -302.72, 332.04);
     display(secretariat_interieur, secretariat_droit, 4950.11, -650.3, 75.21);
+=======
+    display(secretariat_droit, portail, 58.5, -378, 4982, -2169.86, -187.19, 4490.10);
+    display(secretariat_gauche, secretariat_droit, 123.8, -180.37, -4986.42, -4987.88, 120.96, 140.62);
+    display(secretariat_interieur, secretariat_droit, 4950.11, -650.3, 75.21, -4962.71, 301.38, -485.55);
+>>>>>>> Stashed changes
     display(secretariat_interieur, secretariat_gauche, -4984.36, -362.2, -26.96);
     display(secretariat_droit, secretariat_gauche, 4971.64, -445.35, 127.31, 590.46, -359.03, 4947.61);
     display(secretariat_gauche, secretariat_interieur, 4780.2, -442.16, -1369.86, 4947.18, -679.20, 65.81);
     display(secretariat_gauche, badminton, 4757.03, -294.87, 1493.86);
+<<<<<<< Updated upstream
     display(portail, parking_personnel, 4979.89, -86.38, -319.01, 1122.00, -1188.01, 4719.76);
     display(parking_personnel, badminton, 4972.78, -376.78, 236.91, 4953.83, -507.10, -327.54);
     display(parking_personnel, portail, -2046.7, -180.56, -4553.14, -4191.74, -707.60, -2616.41);
     display(badminton, parking_personnel, -4908.75, 97.11, 901.49, -4971.81, -69.40, 485.78);
     display(badminton, secretariat_gauche, -4654.45, -37.66, -1803.65);
+=======
+    display(portail, parking_personnel, 4979.89, -86.38, -319.01, 3865.25, -130.78, 3152.85);
+    display(parking_personnel, badminton, 4972.78, -376.78, 236.91);
+    display(parking_personnel, portail, -2046.7, -180.56, -4553.14,-4772.82, -37.66, -1473.94);
+    display(badminton, parking_personnel, -4908.75, 97.11, 901.49);
+    display(badminton, secretariat_gauche, -4654.45, -37.66, -1803.65,-4962.73, 377.42, 428.13);
+>>>>>>> Stashed changes
 
     redirect(secretariat_droit, "../?groupe=1", 17.28, 66.34, -4996.49);
     redirect(secretariat_gauche, "../?groupe=1&panorama_depart=ext_i4", 4985.79, -246.72, 86.11);
