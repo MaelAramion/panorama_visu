@@ -9,29 +9,16 @@ const orientation = [
 
 // Ajouts des panoramas
 const portail = new PANOLENS.ImagePanorama("src/img/exterieur_entree_parking_personnel.jpg");
-portail.addEventListener("enter-fade-start", function () {
-    viewer.tweenControlCenter(orientation[0], 0);
-});
+
 const parking_personnel = new PANOLENS.ImagePanorama("src/img/exterieur_parking_personnel.jpg");
-parking_personnel.addEventListener("enter-fade-start", function () {
-    viewer.tweenControlCenter(orientation[1], 0);
-});
+
 const secretariat_droit = new PANOLENS.ImagePanorama("src/img/exterieur_secretariat_droit.jpg");
-secretariat_droit.addEventListener("enter-fade-start", function () {
-    viewer.tweenControlCenter(orientation[2], 0);
-});
+
 const secretariat_gauche = new PANOLENS.ImagePanorama("src/img/exterieur_secretariat_gauche.jpg");
-secretariat_gauche.addEventListener("enter-fade-start", function () {
-    viewer.tweenControlCenter(orientation[3], 0);
-});
+
 const secretariat_interieur = new PANOLENS.ImagePanorama("src/img/interieur_secretariat.jpg");
-secretariat_interieur.addEventListener("enter-fade-start", function () {
-    viewer.tweenControlCenter(orientation[4], 0);
-});
+
 const badminton = new PANOLENS.ImagePanorama("src/img/exterieur_badminton.jpg");
-secretariat_interieur.addEventListener("enter-fade-start", function () {
-    viewer.tweenControlCenter(orientation[5], 0);
-});
 
 const viewer = new PANOLENS.Viewer({ output: "console" });
 
@@ -71,7 +58,7 @@ function display(portail, nextPanorama, pos1, pos2, pos3, o1, o2, o3) {
         viewer.setPanorama(nextPanorama);
         if(o1 != null && o2 != null && o3 != null){
             nextPanorama.addEventListener('enter-fade-start', function () {
-                viewer.tweenControlCenter(new THREE.Vector3(o1, o2 , o3));
+                viewer.tweenControlCenter(new THREE.Vector3(o1, o2 , o3), 0);
             });
         }
     });
@@ -95,28 +82,34 @@ function redirectPanorama(panorama_depart) {
         display(secretariat_gauche, secretariat_droit, 123.8, -180.37, -4986.42);
         display(portail, secretariat_droit, 2674.21, -316.66, -4202.18);
         display(secretariat_droit, portail, 58.5, -378, 4982);
+        secretariat_gauche.addEventListener('enter-fade-start', function () {
+            viewer.tweenControlCenter(new THREE.Vector3(-4979.72, 28.77, 365.36), 0);
+        });
     }
     if (panorama_depart == "badminton") {
         display(badminton, parking_personnel, -4908.75, 97.11, 901.49);
+        badminton.addEventListener('enter-fade-start', function () {
+            viewer.tweenControlCenter(new THREE.Vector3(-20.59, -351.53, 4985.11), 0);
+        });
         display(portail, secretariat_droit, 2674.21, -316.66, -4202.18);
         display(secretariat_droit, portail, 58.5, -378, 4982);
         display(secretariat_gauche, secretariat_droit, 123.8, -180.37, -4986.42);
     }
 
     // display(panorama de départ, panorama d'arrivé, coordonées de l'infospot)
-    display(portail, secretariat_droit, 2674.21, -316.66, -4202.18);
+    display(portail, secretariat_droit, 2674.21, -316.66, -4202.18, -47.16, -147.59, -4991.73);
     display(secretariat_droit, secretariat_interieur, 579.92, -119.75, -4958.78,-4981.72, -391.67, 55.23);
-    display(secretariat_droit, portail, 58.5, -378, 4982);
-    display(secretariat_gauche, secretariat_droit, 123.8, -180.37, -4986.42);
+    display(secretariat_droit, portail, 58.5, -378, 4982, -2472.54, -774.92, 4275.68);
+    display(secretariat_gauche, secretariat_droit, 123.8, -180.37, -4986.42, -4970.70, -302.72, 332.04);
     display(secretariat_interieur, secretariat_droit, 4950.11, -650.3, 75.21);
     display(secretariat_interieur, secretariat_gauche, -4984.36, -362.2, -26.96);
-    display(secretariat_droit, secretariat_gauche, 4971.64, -445.35, 127.31);
+    display(secretariat_droit, secretariat_gauche, 4971.64, -445.35, 127.31, 590.46, -359.03, 4947.61);
     display(secretariat_gauche, secretariat_interieur, 4780.2, -442.16, -1369.86, 4947.18, -679.20, 65.81);
     display(secretariat_gauche, badminton, 4757.03, -294.87, 1493.86);
-    display(portail, parking_personnel, 4979.89, -86.38, -319.01);
-    display(parking_personnel, badminton, 4972.78, -376.78, 236.91);
-    display(parking_personnel, portail, -2046.7, -180.56, -4553.14);
-    display(badminton, parking_personnel, -4908.75, 97.11, 901.49);
+    display(portail, parking_personnel, 4979.89, -86.38, -319.01, 1122.00, -1188.01, 4719.76);
+    display(parking_personnel, badminton, 4972.78, -376.78, 236.91, 4953.83, -507.10, -327.54);
+    display(parking_personnel, portail, -2046.7, -180.56, -4553.14, -4191.74, -707.60, -2616.41);
+    display(badminton, parking_personnel, -4908.75, 97.11, 901.49, -4971.81, -69.40, 485.78);
     display(badminton, secretariat_gauche, -4654.45, -37.66, -1803.65);
 
     redirect(secretariat_droit, "../?groupe=1", 17.28, 66.34, -4996.49);
